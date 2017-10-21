@@ -30,9 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
+        android:gravity="top|center"
         android:text="settings"
         android:textColor="#ee66dd"
-        android:textSize="50dp"
-        foo:customFont="BAUHS93.ttf" />
+        android:textSize="50dp" />
 </LinearLayout>

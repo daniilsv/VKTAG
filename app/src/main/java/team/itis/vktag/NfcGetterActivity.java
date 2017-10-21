@@ -30,7 +30,6 @@ public class NfcGetterActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        System.out.println(getIntent().getAction());
 
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction()) ||
                 NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
@@ -43,7 +42,7 @@ public class NfcGetterActivity extends AppCompatActivity {
         NdefRecord firstRecord = ((NdefMessage) msgs[0]).getRecords()[0];
 
         String tagData = new String(firstRecord.getPayload());
-        Toast.makeText(this, tagData, Toast.LENGTH_LONG).show();
+        tagData = tagData.substring(1);
         Intent serviceIntent = new Intent(NfcGetterActivity.this, NFCService.class);
         serviceIntent.setAction("start");
         serviceIntent.putExtra("tagdata", tagData);

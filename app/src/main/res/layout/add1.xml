@@ -30,7 +30,6 @@
         android:layout_margin="50dp"
         android:layout_weight="80"
         android:orientation="vertical"
-        android:padding="30dp"
         android:weightSum="10">
 
         <ImageButton
