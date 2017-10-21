@@ -23,8 +23,8 @@
             foo:customFont="main.ttf" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
+    <fr.castorflex.android.verticalviewpager.VerticalViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="70"
