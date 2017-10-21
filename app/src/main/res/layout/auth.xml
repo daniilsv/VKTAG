@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:src="@drawable/vk" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30">
+
+        <team.itis.vktag.TextViewPlus
+            android:id="@+id/textTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="tag"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="100dp"
+            foo:customFont="BAUHS93.ttf" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20">
+
+        <LinearLayout
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <team.itis.vktag.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Login in VK"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#4433dd"
+                android:textSize="20dp"
+                foo:customFont="BAUHS93.ttf" />
+
+
+            <team.itis.vktag.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="register"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#ee66dd"
+                android:textSize="20dp"
+                foo:customFont="BAUHS93.ttf" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
