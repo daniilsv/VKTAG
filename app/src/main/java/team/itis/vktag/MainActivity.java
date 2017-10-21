@@ -16,7 +16,6 @@ import com.vk.sdk.api.VKError;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sPref;
-    View lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, WorkActivity.class);
                 startActivity(intent);
                 finish();
-//                VKApiMethods.addFriend("daniilsv");
-//                VKApiMethods.setLike("wall", 3991539, 993);
-//                VKApiMethods.repost("wall", "3991539", "993");
-//                VKApiMethods.joinGroup("igm");
             }
 
             @Override

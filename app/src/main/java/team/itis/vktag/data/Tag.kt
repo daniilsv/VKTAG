@@ -25,7 +25,4 @@ class Tag {
     @SerializedName("title")
     @Expose
     var title: String? = null
-    @SerializedName("can_modify")
-    @Expose
-    var canModify: Boolean? = false
 }

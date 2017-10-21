@@ -16,16 +16,14 @@ interface TagVKApi {
     fun updateTag(@Query("hash") hash: String,
                   @Query("title") title: String,
                   @Query("type") type: String,
-                  @Query("data") data: Any,
-                  @Query("allow_modify") allow_modify: Boolean = false): Call<ApiResponse>
+                  @Query("data") data: Any): Call<ApiResponse>
 
 
     @PUT("/")
     fun insertTag(@Query("hash") hash: String,
                   @Query("title") title: String = "",
                   @Query("type") type: String,
-                  @Query("data") data: Any,
-                  @Query("allow_modify") allow_modify: Boolean = false): Call<ApiResponse>
+                  @Query("data") data: Any): Call<ApiResponse>
 
     @DELETE("/")
     fun deleteTag(@Query("hash") hash: String): Call<ApiResponse>

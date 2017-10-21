@@ -2,11 +2,15 @@ package team.itis.vktag;
 
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.vk.sdk.VKSdk;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +48,7 @@ public class NFCService extends Service implements Callback<ApiResponse> {
         Tag tag = res.getTag();
         if (tag == null)
             return;
-        if (tag.getHash() == null) {
+        if (tag.getId() == 0) {
             //TODO:СОЗДАНИЕ МЕТКИ
             return;
         }
@@ -53,25 +57,32 @@ public class NFCService extends Service implements Callback<ApiResponse> {
 
     private void processTag(Tag tag) {
         if (tag.getType() == null || tag.getData() == null) {
-            Toast.makeText(this, "bad tag", Toast.LENGTH_SHORT).show();
             return;
         }
         if (!VKSdk.wakeUpSession(this)) {
-            Toast.makeText(this, "bad token", Toast.LENGTH_SHORT).show();
             return;
         }
+        String url;
         switch (tag.getType()) {
             case "friend_add":
                 VKApiMethods.addFriend((String) tag.getData());
-                Toast.makeText(this, "friend_add " + tag.getData(), Toast.LENGTH_SHORT).show();
                 break;
             case "group_join":
                 VKApiMethods.joinGroup((String) tag.getData());
-                Toast.makeText(this, "group_join " + tag.getData(), Toast.LENGTH_SHORT).show();
                 break;
             case "like_repost":
-                //VKApiMethods.joinGroup((String) tag.getData());
+//                VKApiMethods.repost((String) tag.getData());
                 Toast.makeText(this, "like_repost " + tag.getData(), Toast.LENGTH_SHORT).show();
+                break;
+            case "open_photo":
+                url = ((String) tag.getData()).replaceAll("https://vk\\.com/(.*\\?.=)*(.+)", "$2");
+                url = new ArrayList<>(Arrays.asList(url.split("%2F"))).get(0);
+                Toast.makeText(this, "open_photo " + url, Toast.LENGTH_SHORT).show();
+                break;
+            case "open_wall":
+                url = ((String) tag.getData()).replaceAll("https://vk\\.com/(.*\\?.=)*(.+)", "$2");
+                url = new ArrayList<>(Arrays.asList(url.split("%2F"))).get(0);
+                Toast.makeText(this, "open_wall " + url, Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(this, tag.getType(), Toast.LENGTH_SHORT).show();
@@ -82,5 +93,11 @@ public class NFCService extends Service implements Callback<ApiResponse> {
     @Override
     public void onFailure(Call<ApiResponse> call, Throwable t) {
         System.out.println(toString());
+    }
+
+    public void openUrl(String url) {
+        Uri address = Uri.parse(url);
+        Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
+        startActivity(openlinkIntent);
     }
 }
