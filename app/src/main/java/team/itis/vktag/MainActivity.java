@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
 
         if (VKSdk.wakeUpSession(this)) {
+
             Intent intent = new Intent(MainActivity.this, WorkActivity.class);
             startActivity(intent);
             finish();

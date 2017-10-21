@@ -12,18 +12,20 @@ interface TagVKApi {
     @GET("/")
     fun getTag(@Query("hash") hash: String): Call<ApiResponse>
 
+    @FormUrlEncoded
     @POST("/")
-    fun updateTag(@Query("hash") hash: String,
-                  @Query("title") title: String,
-                  @Query("type") type: String,
-                  @Query("data") data: Any): Call<ApiResponse>
+    fun updateTag(@Field("hash") hash: String,
+                  @Field("title") title: String = "",
+                  @Field("type") type: String,
+                  @Field("data") data: Any): Call<ApiResponse>
 
 
+    @FormUrlEncoded
     @PUT("/")
-    fun insertTag(@Query("hash") hash: String,
-                  @Query("title") title: String = "",
-                  @Query("type") type: String,
-                  @Query("data") data: Any): Call<ApiResponse>
+    fun insertTag(@Field("hash") hash: String,
+                  @Field("title") title: String = "",
+                  @Field("type") type: String,
+                  @Field("data") data: Any): Call<ApiResponse>
 
     @DELETE("/")
     fun deleteTag(@Query("hash") hash: String): Call<ApiResponse>

@@ -1,6 +1,7 @@
 package team.itis.vktag;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +38,19 @@ public class TagAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
-        Tag tag = mItems.get(position);
+        final Tag tag = mItems.get(position);
         LayoutInflater inflater = LayoutInflater.from(mActivity);
         ViewGroup layout = (ViewGroup) inflater.inflate(mRowResId, null);
         ((TextViewPlus) layout.findViewById(R.id.title)).setText(tag.getTitle());
         layout.setTranslationY(-1 * layout.getHeight() * position);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mActivity, SettingsActivity.class);
+                i.putExtra("hash", tag.getHash());
+                mActivity.startActivity(i);
+            }
+        });
         collection.addView(layout);
         return layout;
     }

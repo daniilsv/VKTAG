@@ -34,17 +34,23 @@ class VKApiMethods extends VKRequest.VKRequestListener {
         });
     }
 
-    public static void setLike(String type, int friendId, int item_id) {
+    public static void setLike(String object) {
+        String url0 = object.replaceAll("([a-z]+)(-*)([0-9]+)_([0-9]+)", "$1+$2$3+$4");
+        String[] url = url0.split("\\+");
+        if (url.length != 3)
+            return;
+        if (url[0].equals("wall"))
+            url[0] = "post";
         VKRequest request = new VKRequest("likes.add", VKParameters.from(
-                "type", type,
-                "owner_id", friendId,
-                "item_id", item_id));
+                "type", url[0],
+                "owner_id", url[1],
+                "item_id", url[2]));
         request.executeWithListener(getInstance());
     }
 
-    public static void repost(String type, String wallId, String itemId) {
+    public static void repost(String object) {
         request = VKApi.wall().repost(VKParameters.from(
-                "object", type + wallId + "_" + itemId));
+                "object", object));
         request.executeWithListener(getInstance());
     }
 

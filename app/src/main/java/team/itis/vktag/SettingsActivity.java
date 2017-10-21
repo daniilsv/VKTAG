@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,9 +21,9 @@ import team.itis.vktag.data.Tag;
 import team.itis.vktag.data.TagVKApi;
 
 public class SettingsActivity extends AppCompatActivity implements Callback<ApiResponse> {
-    static String hash, name, action, url;
-    String[] types = {"Add Friends", "Like", "Repost", "Join group", "Open profile", "Open post", "Join group"};
-    EditText editName;
+    static String hash, title, action, url;
+    String[] types = {"friend_add", "group_join", "like", "repost", "open_photo", "open_wall", "open_market"};
+    EditText editTitle;
     EditText editUrl;
     Spinner spinner;
     TagVKApi tagApi;
@@ -35,17 +38,20 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
             hash = getIntent().getStringExtra("hash");
             tagApi.getTag(hash).enqueue(this);
         }
-        editName = (EditText) findViewById(R.id.edit_name);
+        editTitle = (EditText) findViewById(R.id.edit_title);
         editUrl = (EditText) findViewById(R.id.edit_url);
         spinner = (Spinner) findViewById(R.id.spinner_type);
         findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                title = editTitle.getText().toString();
+                url = editUrl.getText().toString();
                 if (tagApi != null)
-                    tagApi.updateTag(hash, name, action, url).enqueue(new Callback<ApiResponse>() {
+                    tagApi.updateTag(hash, title, action, url).enqueue(new Callback<ApiResponse>() {
                         @Override
                         public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                            Toast.makeText(getBaseContext(), "Changed", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(getBaseContext(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -56,26 +62,15 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
             }
         });
 
-        editName.setText(name);
-        editUrl.setText(url);
-
-
-        // адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, types);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, types);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
         spinner.setAdapter(adapter);
-        // заголовок
         spinner.setPrompt("Type");
-        // выделяем элемент
-        spinner.setSelection(2);
-        // устанавливаем обработчик нажатия
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                // показываем позиция нажатого элемента
                 action = types[position];
             }
 
@@ -87,6 +82,12 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
         });
     }
 
+    private void setData() {
+        editTitle.setText(title);
+        editUrl.setText(url);
+        spinner.setSelection(new ArrayList<>(Arrays.asList(types)).indexOf(action));
+    }
+
     @Override
     public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
         if (response == null || response.body() == null)
@@ -95,9 +96,10 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
         Tag tag = res.getTag();
         if (tag == null)
             return;
-        name = tag.getTitle();
+        title = tag.getTitle();
         action = tag.getType();
         url = (String) tag.getData();
+        setData();
     }
 
     @Override
