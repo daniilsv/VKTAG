@@ -47,6 +47,8 @@
             android:name=".NFCService"
             android:enabled="true"
             android:exported="true" />
+
+        <activity android:name=".WorkActivity"></activity>
     </application>
 
 </manifest>

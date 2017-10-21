@@ -3,35 +3,45 @@
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rounded"
-    android:orientation="vertical"
-    android:weightSum="4">
+    android:layout_margin="12dp">
 
-    <team.itis.vktag.TextViewPlus
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Title"
-        android:textAllCaps="true"
-        android:textColor="#4433dd"
-        android:textSize="70dp"
-        foo:customFont="BAUHS93.ttf" />
+        android:layout_height="match_parent"
+        foo:cardBackgroundColor="#45688E"
+        foo:cardCornerRadius="15dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="Description"
-        android:textSize="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
+            android:weightSum="10">
 
-    <team.itis.vktag.TextViewPlus
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="top|center"
-        android:text="settings"
-        android:textColor="#ee66dd"
-        android:textSize="50dp" />
+            <team.itis.vktag.TextViewPlus
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:gravity="center"
+                android:text="Title"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="46dp"
+                foo:customFont="second.ttf" />
+
+            <TextView
+                android:id="@+id/textViewPlus2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:gravity="top|center"
+                android:scaleType="fitCenter"
+                android:text="tap to edit"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
@@ -15,15 +16,26 @@ import com.vk.sdk.api.VKError;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sPref;
+    View lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         if (!VKSdk.wakeUpSession(this)) {
             VKSdk.login(this, "likes", "friends", "wall", "groups");
         }
+    }
+
+    @Override
+    protected void onResume() {
+
+        if (VKSdk.wakeUpSession(this)) {
+            Intent intent = new Intent(MainActivity.this, WorkActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        super.onResume();
     }
 
     @Override
@@ -37,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString("userId", res.userId);
                 ed.apply();
+                Intent intent = new Intent(MainActivity.this, WorkActivity.class);
+                startActivity(intent);
+                finish();
 //                VKApiMethods.addFriend("daniilsv");
 //                VKApiMethods.setLike("wall", 3991539, 993);
 //                VKApiMethods.repost("wall", "3991539", "993");
@@ -51,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         })) {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void loginVk(View v) {
+        VKSdk.login(this, "likes", "friends", "wall", "groups");
     }
 
     public void openUrl(String url) {

@@ -23,20 +23,13 @@
             foo:customFont="main.ttf" />
     </FrameLayout>
 
-    <FrameLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="70">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add_white_24dp"
-            android:textAlignment="center" />
-
-    </FrameLayout>
+        android:layout_weight="70"
+        android:overScrollMode="never"
+        android:padding="24dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -44,6 +37,7 @@
         android:layout_weight="10">
 
         <team.itis.vktag.TextViewPlus
+            android:id="@+id/tags_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"

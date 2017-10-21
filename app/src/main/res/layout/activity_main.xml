@@ -3,56 +3,83 @@
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/textile_321211"
     android:orientation="vertical"
     android:weightSum="100">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        android:background="@android:color/white">
+        android:layout_weight="30">
 
-        <team.itis.vktag.TextViewPlus
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="My tags"
-            android:textAllCaps="true"
-            android:textColor="#4433dd"
-            android:textSize="30dp"
-            foo:customFont="BAUHS93.ttf" />
+            android:layout_margin="20dp"
+            android:src="@drawable/vk" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
-        android:padding="30dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add_white_24dp"
-            android:textAlignment="center" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="50">
 
         <team.itis.vktag.TextViewPlus
+            android:id="@+id/textTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:text="you don't have any tags yet"
+            android:layout_gravity="center"
+            android:text="tag"
             android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="20dp"
-            foo:customFont="BAUHS93.ttf" />
+            android:textColor="@android:color/white"
+            android:textSize="100dp"
+            foo:customFont="main.ttf" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20">
+
+        <LinearLayout
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <team.itis.vktag.TextViewPlus
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:onClick="loginVk"
+                android:text="Login with VK"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#1b2639"
+                android:textSize="20dp"
+                foo:customFont="main.ttf" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#1b2639"></FrameLayout>
+
+            <team.itis.vktag.TextViewPlus
+                android:id="@+id/textViewPlus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text="register"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#1b2639"
+                android:textSize="20dp"
+                foo:customFont="main.ttf" />
+        </LinearLayout>
     </FrameLayout>
 </LinearLayout>

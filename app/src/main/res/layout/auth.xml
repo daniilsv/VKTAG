@@ -34,7 +34,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="100dp"
-            foo:customFont="BAUHS93.ttf" />
+            foo:customFont="main.ttf" />
     </FrameLayout>
 
     <FrameLayout
@@ -62,7 +62,7 @@
                 android:textAllCaps="true"
                 android:textColor="#1b2639"
                 android:textSize="20dp"
-                foo:customFont="BAUHS93.ttf" />
+                foo:customFont="main.ttf" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                 android:textAllCaps="true"
                 android:textColor="#1b2639"
                 android:textSize="20dp"
-                foo:customFont="BAUHS93.ttf" />
+                foo:customFont="main.ttf" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

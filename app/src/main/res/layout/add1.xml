@@ -3,15 +3,14 @@
     xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/textile_1251716"
     android:orientation="vertical"
     android:weightSum="100">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        android:background="@android:color/white">
+        android:layout_weight="20">
 
         <team.itis.vktag.TextViewPlus
             android:layout_width="wrap_content"
@@ -19,40 +18,41 @@
             android:layout_gravity="center"
             android:text="My tags"
             android:textAllCaps="true"
-            android:textColor="#4433dd"
-            android:textSize="30dp"
-            foo:customFont="BAUHS93.ttf" />
+            android:textColor="#ffffff"
+            android:textSize="40dp"
+            foo:customFont="main.ttf" />
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="50dp"
-        android:layout_weight="80"
+        android:layout_weight="60"
         android:orientation="vertical"
         android:weightSum="10">
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:rotation="180"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
 
-        <FrameLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6">
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            foo:cardCornerRadius="15dp">
 
             <include layout="@layout/tag_card" />
-        </FrameLayout>
+        </android.support.v7.widget.CardView>
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
@@ -62,7 +62,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="20">
 
         <team.itis.vktag.TextViewPlus
             android:layout_width="match_parent"
@@ -72,6 +72,6 @@
             android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="20dp"
-            foo:customFont="BAUHS93.ttf" />
+            foo:customFont="main.ttf" />
     </FrameLayout>
 </LinearLayout>
