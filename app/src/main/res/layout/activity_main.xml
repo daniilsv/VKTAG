@@ -48,7 +48,7 @@
         <team.itis.vktag.TextViewPlus
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
             android:text="you don't have any tags yet"
             android:textAlignment="center"
             android:textColor="#ffffff"
