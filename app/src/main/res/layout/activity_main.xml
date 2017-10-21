@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/textile_321211"
     android:orientation="vertical"
-    android:weightSum="100">
+    android:weightSum="90">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -63,23 +63,6 @@
                 android:textSize="20dp"
                 foo:customFont="main.ttf" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#1b2639"></FrameLayout>
-
-            <team.itis.vktag.TextViewPlus
-                android:id="@+id/textViewPlus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:text="register"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="#1b2639"
-                android:textSize="20dp"
-                foo:customFont="main.ttf" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
