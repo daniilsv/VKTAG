@@ -25,4 +25,7 @@ class Tag {
     @SerializedName("title")
     @Expose
     var title: String? = null
+    @SerializedName("views")
+    @Expose
+    var views: Int? = 0
 }
