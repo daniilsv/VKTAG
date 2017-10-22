@@ -3,6 +3,7 @@ package team.itis.vktag;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,33 @@ public class TagAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(mActivity);
         ViewGroup layout = (ViewGroup) inflater.inflate(mRowResId, null);
         ((TextViewPlus) layout.findViewById(R.id.title)).setText(tag.getTitle());
+        CardView cardView = layout.findViewById(R.id.tagCard);
+        switch (tag.getType()) {
+            case "friend_add":
+                cardView.setBackgroundResource(R.color.colorPrimary);
+                break;
+            case "group_join":
+                cardView.setBackgroundResource(R.color.black);
+                break;
+            case "like":
+                cardView.setBackgroundResource(R.color.green);
+                break;
+            case "repost":
+                cardView.setBackgroundResource(R.color.orange);
+                break;
+            case "open_photo":
+                cardView.setBackgroundResource(R.color.red);
+                break;
+            case "open_wall":
+                cardView.setBackgroundResource(R.color.yellow);
+                break;
+            case "open_market":
+                cardView.setBackgroundResource(R.color.colorAccent);
+                break;
+            default:
+
+                break;
+        }
         layout.setTranslationY(-1 * layout.getHeight() * position);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
