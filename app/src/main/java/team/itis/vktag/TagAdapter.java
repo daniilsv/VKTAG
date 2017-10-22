@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,7 @@ public class TagAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(mActivity);
         ViewGroup layout = (ViewGroup) inflater.inflate(mRowResId, null);
         ((TextViewPlus) layout.findViewById(R.id.title)).setText(tag.getTitle());
+        ((TextView) layout.findViewById(R.id.type)).setText(tag.getType());
         CardView cardView = layout.findViewById(R.id.tagCard);
         switch (tag.getType()) {
             case "friend_add":

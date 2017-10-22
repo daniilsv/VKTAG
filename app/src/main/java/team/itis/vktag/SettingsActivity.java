@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
     EditText editUrl;
     Spinner spinner;
     TagVKApi tagApi;
+    TextView viewViews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
             hash = getIntent().getStringExtra("hash");
             tagApi.getTag(hash).enqueue(this);
         }
+        viewViews = (TextView) findViewById(R.id.views);
         editTitle = (EditText) findViewById(R.id.edit_title);
         editUrl = (EditText) findViewById(R.id.edit_url);
         spinner = (Spinner) findViewById(R.id.spinner_type);
@@ -99,6 +102,7 @@ public class SettingsActivity extends AppCompatActivity implements Callback<ApiR
         title = tag.getTitle();
         action = tag.getType();
         url = (String) tag.getData();
+        viewViews.setText(tag.getViews() + " views");
         setData();
     }
 
